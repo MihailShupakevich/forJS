@@ -36,7 +36,7 @@ const tree = {
 };
 
 
-let sum = (tree, key) => {
+const sum = (tree, key) => {
   let result = 0;
   const traverse = (node) => {
     if (typeof node === 'object' && node !== null) {

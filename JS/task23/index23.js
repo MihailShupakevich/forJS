@@ -1,7 +1,7 @@
 // 23 
 // найти и исправить как можно больше ошибок, функция должна создавать полную копию объекта
 
-function createCopy (data){
+const createCopy = (data) => {
   if(typeof data !== 'object'){
     throw new Error('data must be is object')
   } //мы должны удостовериться что на вход нам приходит объект

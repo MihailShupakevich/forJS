@@ -6,9 +6,8 @@
 let result = '';
 const convertToObject = (variable) => {
   for(let i = variable.length-1 ; i >= 0; i--){
-    restVariable = [...variable];
+    const restVariable = [...variable];
     result = `${restVariable[i]}: {${result}}`
   }
   return result 
 }
-console.log(convertToObject('bcd')); // { a: { b: { c: {} } } }

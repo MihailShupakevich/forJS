@@ -1,7 +1,7 @@
 // 7
 
 
-function sum(variable1, variable2) {
+const sum = (variable1, variable2) => {
   return variable1 + variable2;
 }
 

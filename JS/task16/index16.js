@@ -13,7 +13,7 @@
 
  let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-let aclean = (arr1) => {
+const aclean = (arr1) => {
   let sortedArr = arr1.map((el) => [...el].sort().join('').toLowerCase());
   return [...new Set(sortedArr)].map((sortedStr) => {
   return arr1.find((el) => [...el].sort().join('') === sortedStr);

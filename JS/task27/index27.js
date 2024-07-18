@@ -47,7 +47,6 @@ const promiseAllSettled = (promises2) => {
           }
         },
         (reason) => {
-          console.log('>>>>>>>>>>>>',reason);
           results[index] = { status: 'rejected', reason };
           settledCount++;
           if (settledCount === promises2.length) {
