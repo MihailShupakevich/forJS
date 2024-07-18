@@ -7,12 +7,14 @@
 // matchCharacters('кот', 'ком') --> false
 // matchCharacters('аларм', 'малар', 'армал', 'рамал') --> true
 
+let matchCharacters = (...words) => {
+  let firstWordSet = new Set([...words[0]]);
+  return words.every((word) => {
+    let wordSet = new Set([...word]);
+    return [...firstWordSet].every((char) => wordSet.has(char)) &&
+           [...wordSet].every((char) => firstWordSet.has(char));
+  });
+}
 
-let matchCharacters = (firstWord,...args) => {
-  let sortedFirstWord =[...firstWord].sort();
-  let anotherWords = [...args];
-  let arr1 = anotherWords.map((el)=>[...el].sort());
-   return arr1.every((el) => JSON.stringify(el) === JSON.stringify(sortedFirstWord));
 
-} 
- console.log(matchCharacters( 'bro', 'rob','bor'));
+console.log(matchCharacters('bro', 'rob', 'bor', 'rbro')); 

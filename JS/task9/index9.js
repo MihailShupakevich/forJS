@@ -8,7 +8,7 @@
 
 
 let count = 1;
-let sum= '';
+let sum = '';
 let getNumberCharacters = (stroka) => {
 
   for(let i = 0; i<=stroka.length-1; i++){

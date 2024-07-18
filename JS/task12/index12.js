@@ -5,27 +5,13 @@
 
 
 
-let number = 0;
-let sum = ''
 let createBoard = () => {
-    for(let i = 0 ; i<60; i++){
-      {
-        if (number === 10) {
-          sum +='\n';
-          number=0;
-         
-        }
-      if (i % 2 ==0) {
-        sum+='_'  
-        number++
-      }
-      else {sum+='#' , number++};
-
-    }
-    
+  let result = '';
+  for (let i = 0; i < 60; i++) {
+    result += (i % 2 === 0) ? '_' : '#';
+    if ((i + 1) % 10 === 0) result += '\n';
   }
-  return sum
+  return result;
 }
-
 
 console.log(createBoard());

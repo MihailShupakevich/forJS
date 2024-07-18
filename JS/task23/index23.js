@@ -1,23 +1,26 @@
 // 23 
 // найти и исправить как можно больше ошибок, функция должна создавать полную копию объекта
 
-function createCopy(data) {
-  if (!data || typeof data !== 'object') {
-    throw new Error('Invalid input data');
+const createCopy = (data) => {
+  if (!data || typeof data!== 'object') {
+    return data; 
   }
+  const copy = Array.isArray(data)? [] : {};
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      const value = data[key];
 
-  const copy = JSON.parse(JSON.stringify(data));
-
-  if (!copy.setting || typeof copy.setting !== 'object') {
-    copy.setting = {};
+      if (typeof value === 'object') {
+        copy[key] = deepCopy(value);
+      } else if (typeof value === 'function') {
+        copy[key] = function() {
+          return value.apply(this, arguments);
+        };
+      } else {
+        copy[key] = value;
+      }
+    }
   }
-
-  if (typeof copy.setting.title !== 'string') {
-    copy.setting.title = '';
-  }
-
-  copy.setting = {...copy.setting, title: `new copy ${copy.setting.title}` };
   return copy;
 }
-
 console.log(createCopy({1:2,3:4}));
