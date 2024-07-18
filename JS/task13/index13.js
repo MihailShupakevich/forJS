@@ -4,7 +4,7 @@
 // аргументов строки '-', '1', 'b', '1c', реализуйте ее так,
 // чтобы она вернула строку '1-b-1c'
 
-let anotherFn = (delim, ...args) =>{
-  return  [...args].join(delim)
+const anotherFn = (symbol, ...args) =>{
+  return  [...args].join(symbol)
 }
-console.log(anotherFn('=','ld','11', 'g'));
+anotherFn('=','ld','11', 'g');

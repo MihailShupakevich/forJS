@@ -4,15 +4,13 @@
 
 
 const arr = [1,2,3,4];
-let newArr = [];
-let variable;
+const newArr = [];
 const reverseFunc = (arr1) => {
   if(arr1.length !== 0){
-      variable = arr1.pop()
-      newArr.push(variable);
+      newArr.push(arr1.pop());
     return  reverseFunc(arr1);
     }
   else return newArr;
   }
-reverseFunc(arr)
+
 

@@ -11,7 +11,6 @@
 // Напишите функцию aclean(arr), которая возвращает массив слов,
 // очищенный от анаграмм.
 
-// Например
  let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
 let aclean = (arr1) => {
@@ -20,13 +19,3 @@ let aclean = (arr1) => {
   return arr1.find((el) => [...el].sort().join('') === sortedStr);
   });
 };
-
-
-console.log(( aclean(arr) )); // "nap,teachers,ear" или "PAN,cheaters,era"
-
-
-
-
-
-// Из каждой группы анаграмм должно остаться только одно слово,
-// не важно какое.

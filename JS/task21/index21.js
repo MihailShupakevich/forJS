@@ -1,34 +1,46 @@
 // 21 напишите кастомный Flat
-
-function flat(data) {
-  const result = [];
-
-  function flatten(data) {
-    if (Array.isArray(data)) {
-      for (const item of data) {
-        flatten(item);
+const flat = (input) => {
+  const flattenArray = (arr) => {
+    return arr.reduce((acc, val) => {
+      if (Array.isArray(val)) {
+        acc.push(...flattenArray(val));
+      } else if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
+        acc.push(flattenObject(val));
+      } else {
+        acc.push(val);
       }
-    } else if (typeof data === 'object') {
-      for (const key in data) {
-        if (Array.isArray(data[key])) {
-          flatten(data[key]);
-        } else if (typeof data[key] === 'object') {
-          Object.assign(result, data[key]);
-        } else {
-          result.push(data[key]);
-        }
-      }
-    } else {
-      result.push(data);
-    }
+      return acc;
+    }, []);
   }
 
-  flatten(data);
+  const flattenObject = (obj) => {
+    let result = {};
+    for (let key in obj) {
+      if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
+        // Если значение - объект, рекурсивно расплющиваем его
+        let flatObj = flattenObject(obj[key]);
+        for (let subKey in flatObj) {
+          result[subKey] = flatObj[subKey];
+        }
+      } else if (Array.isArray(obj[key])) {
+        result[key] = flattenArray(obj[key]);
+      } else {
+        result[key] = obj[key];
+      }
+    }
+    return result;
+  }
 
-  return result;
+  if (Array.isArray(input)) {
+    return flattenArray(input);
+  } else if (typeof input === 'object' && input !== null) {
+
+    return flattenObject(input);
+  } else {
+
+    return input;
+  }
 }
-
-
 
 const test = [
   1,
@@ -49,8 +61,6 @@ const test = [
   ['098', [33, 44, [[12], 1, [56]]]]
 ];
 
-console.log(flat(test)); // должно вернуть [1, 2, 3, 4, 5, 11, 9, { one: 1, bar : 'pop', foo: 33, name: 'oleg', olga: true, in: 'in' }, '098', 33, 44, 12, 1, 56]
-
 const test2 = {
   foo: {
     one: 1,
@@ -70,5 +80,4 @@ const test2 = {
       ['098', [33, 44, [[12], 1, [56]]]]
     ]
   },
-} 
-console.log(flat(test2)); // вернет {one: 1, bar: 'pop', foo2: 33, name: 'oleg', olga: true, in: 'in', abc: [1, 2, 3, 4, 5, 11, 9, '098', 33, 44, 12, 1, 56]},
+};

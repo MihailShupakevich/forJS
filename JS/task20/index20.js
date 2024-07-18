@@ -16,8 +16,6 @@ const tree = {
   c: 1
 };
 
-
-
 const inverse = (tree1) => {
   const newTree = {};
   for (const key in tree1) {
@@ -29,6 +27,4 @@ const inverse = (tree1) => {
   }
   return newTree;
 };
-
 const newTree = inverse(tree);
-console.log(newTree);

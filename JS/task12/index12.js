@@ -2,9 +2,6 @@
 
 // Написать функцию которая будет строить “шахматную доску”
 // Пример работы:
-
-
-
 let createBoard = () => {
   let result = '';
   for (let i = 0; i < 60; i++) {
@@ -13,5 +10,4 @@ let createBoard = () => {
   }
   return result;
 }
-
-console.log(createBoard());
+createBoard();

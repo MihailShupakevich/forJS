@@ -1,26 +1,20 @@
 // 23 
 // найти и исправить как можно больше ошибок, функция должна создавать полную копию объекта
 
-const createCopy = (data) => {
-  if (!data || typeof data!== 'object') {
-    return data; 
+function createCopy (data){
+  if(typeof data !== 'object'){
+    throw new Error('data must be is object')
+  } //мы должны удостовериться что на вход нам приходит объект
+  const copy = {
+    meta: data.meta, 
+    age : data.age,
+    setting : data.setting ? { ...data.setting } : {} //для безопасного доступа к свойству объекта ставим "?"
   }
-  const copy = Array.isArray(data)? [] : {};
-  for (const key in data) {
-    if (Object.prototype.hasOwnProperty.call(data, key)) {
-      const value = data[key];
-
-      if (typeof value === 'object') {
-        copy[key] = deepCopy(value);
-      } else if (typeof value === 'function') {
-        copy[key] = function() {
-          return value.apply(this, arguments);
-        };
-      } else {
-        copy[key] = value;
+  if(copy.setting && copy.setting.title){ //проверяем- существует ли такое свойство
+  const title = `new copy ${data.setting.title}`
+  }
+  else {
+    copy.setting.title = 'Default value title'
       }
-    }
-  }
   return copy;
 }
-console.log(createCopy({1:2,3:4}));

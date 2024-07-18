@@ -4,11 +4,10 @@
 // Пример работы функции:
 
 let result = '';
-let convertToObject = (variable) => {
+const convertToObject = (variable) => {
   for(let i = variable.length-1 ; i >= 0; i--){
     restVariable = [...variable];
     result = `${restVariable[i]}: {${result}}`
-    
   }
   return result 
 }

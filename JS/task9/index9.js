@@ -9,18 +9,18 @@
 
 let count = 1;
 let sum = '';
-let getNumberCharacters = (stroka) => {
+const getNumberCharacters = (word) => {
 
-  for(let i = 0; i<=stroka.length-1; i++){
-    if(stroka[i]=== stroka[i+1]){ 
-          count +=1;
+  for( let i = 0; i <= word.length-1 ; i++ ){
+    if( word[i] === word[i+1] ){ 
+          count += 1;
                                 } 
-    else {sum += `${count}${stroka[i]}`
-          count =1;
-        }
+    else {sum += `${count}${word[i]}`
+          count = 1;
+        } 
     }
     return sum
 }
 
-console.log(getNumberCharacters('helllo'));
+getNumberCharacters('helllo');
 

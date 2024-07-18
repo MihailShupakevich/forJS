@@ -7,7 +7,6 @@ const arr = [
   { date: '05.11.2016' },
   { date: '21.12.2002' }
 ];
-
 const sortByDate = (arr) => {
   return arr.sort((a, b) => {
     const dateA = new Date(a.date.split('.').reverse().join('-'));
@@ -15,6 +14,4 @@ const sortByDate = (arr) => {
     return dateA - dateB;
   });
 };
-
 const sortedArr = sortByDate(arr);
-console.log(sortedArr);
